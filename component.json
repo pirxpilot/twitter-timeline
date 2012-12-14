@@ -3,8 +3,12 @@
   "repo": "code42day/twitter-timeline",
   "description": "Displays twitter timeline similarly to twitter widget but without iframe and with more flexible styling options.",
   "version": "0.0.1",
-  "keywords": [],
-  "dependencies": {},
+  "keywords": [
+    "twitter"
+  ],
+  "dependencies": {
+    "matthewmueller/json-to-dom": "*"
+  },
   "development": {},
   "license": "MIT",
   "scripts": [

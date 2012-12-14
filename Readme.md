@@ -1,7 +1,8 @@
 
 # twitter-timeline
 
-  Displays twitter timeline similarly to twitter widget but without iframe and with more flexible styling options.
+Displays twitter timeline similarly to twitter widget but without iframe and with more flexible
+styling options.
 
 ## Installation
 

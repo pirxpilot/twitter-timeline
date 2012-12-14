@@ -1,0 +1,8 @@
+.tweet .photo img {
+	display: block;
+	max-width: 100%;
+}
+
+.tweet .photo a[href] {
+  display: block;
+}
