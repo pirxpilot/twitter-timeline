@@ -7,7 +7,8 @@
     "twitter"
   ],
   "dependencies": {
-    "matthewmueller/json-to-dom": "*"
+    "matthewmueller/json-to-dom": "*",
+    "component/moment": "*"
   },
   "development": {},
   "license": "MIT",

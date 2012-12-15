@@ -1,4 +1,4 @@
-//var moment = require('moment');
+var moment = require('moment');
 var render = require('json-to-dom');
 
 function splice(str, start, end, replacement) {
@@ -93,7 +93,7 @@ function parseTweet(tweet, username) {
   var parsed = {
     href: 'https://twitter.com/' + username + '/status/' + tweet.id_str,
     text: tweet.text,
-    date: tweet.created_at, //moment(tweet.created_at).fromNow(),
+    date: moment(tweet.created_at).fromNow(),
     textAdjustment: []
   };
   [parseMedia, parseHashtags, parseUserMentions, parseUrls].forEach(function(fn) {
