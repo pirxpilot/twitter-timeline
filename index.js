@@ -5,6 +5,22 @@ function splice(str, start, end, replacement) {
   return [str.slice(0, start), replacement, str.slice(end)].join('');
 }
 
+function jsonp(scriptUrl, fn) {
+  var js, fjs, fnName = 'jsonp' + Date.now();
+
+  window[fnName] = function(json) {
+    delete window[fnName];
+    js.parentNode.removeChild(js);
+    fn(json);
+  };
+
+  js = document.createElement('script');
+  js.src = scriptUrl + '&callback=' + fnName;
+  js.async = true;
+  fjs = document.getElementsByTagName('script')[0];
+  fjs.parentNode.insertBefore(js, fjs);
+}
+
 function adjustText(tweet) {
   tweet.textAdjustment
   .sort(function(a, b) {
@@ -109,12 +125,11 @@ module.exports = function (el, opts) {
   // url += '&include_rts=1';
   url += '&trim_user=1';
   url += '&include_entities=1';
-  url += '&callback=?';
 
   console.log('url', url);
 
   el.innerHTML = require('./template');
-  $.getJSON(url, function(data) {
+  jsonp(url, function(data) {
     var tweets;
 
     tweets = data.map(function(tweet) {
