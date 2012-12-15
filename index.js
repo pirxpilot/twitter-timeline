@@ -119,22 +119,37 @@ function parseTweet(tweet, username) {
   return parsed;
 }
 
-module.exports = function (el, opts) {
-  var url = 'http://api.twitter.com/1/statuses/user_timeline/' + opts.username + '.json';
-  url += '?count=10';
-  // url += '&include_rts=1';
-  url += '&trim_user=1';
-  url += '&include_entities=1';
+module.exports = function (username) {
+  var self, my = {
+    username: username,
+    count: 10
+  };
 
-  console.log('url', url);
+  function count(c) {
+    my.count = c;
+    return self;
+  }
 
-  el.innerHTML = require('./template');
-  jsonp(url, function(data) {
-    var tweets;
+  function renderTweets(el) {
+    var url = 'http://api.twitter.com/1/statuses/user_timeline/' + my.username + '.json';
+    url += '?count=' + my.count;
+    url += '&trim_user=1';
+    url += '&include_entities=1';
 
-    tweets = data.map(function(tweet) {
-      return parseTweet(tweet, opts.username);
+
+    jsonp(url, function(data) {
+      var tweets = data.map(function(tweet) {
+        return parseTweet(tweet, my.username);
+      });
+      el.innerHTML = require('./template');
+      render(el.querySelector('.timeline'), tweets);
     });
-    render(el.querySelector('.timeline'), tweets);
-  });
+  }
+
+  self = {
+    count: count,
+    render: renderTweets
+  };
+
+  return self;
 };

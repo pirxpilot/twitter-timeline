@@ -39,9 +39,7 @@
     <script>
        var tt = require('twitter-timeline');
        var el = document.getElementById('tt');
-       tt(el, {
-        username: 'furkot'
-       });
+       tt('furkot').count(15).render(el);
     </script>
   </body>
 </html>
