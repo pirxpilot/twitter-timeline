@@ -1,24 +1,9 @@
 var moment = require('moment');
 var render = require('json-to-dom');
+var jsonp = require('jsonp');
 
 function splice(str, start, end, replacement) {
   return [str.slice(0, start), replacement, str.slice(end)].join('');
-}
-
-function jsonp(scriptUrl, fn) {
-  var js, fjs, fnName = 'jsonp' + Date.now();
-
-  window[fnName] = function(json) {
-    delete window[fnName];
-    js.parentNode.removeChild(js);
-    fn(json);
-  };
-
-  js = document.createElement('script');
-  js.src = scriptUrl + '&callback=' + fnName;
-  js.async = true;
-  fjs = document.getElementsByTagName('script')[0];
-  fjs.parentNode.insertBefore(js, fjs);
 }
 
 function adjustText(tweet) {
@@ -132,12 +117,14 @@ module.exports = function (username) {
 
   function renderTweets(el) {
     var url = 'http://api.twitter.com/1/statuses/user_timeline/' + my.username + '.json';
-    url += '?count=' + my.count;
-    url += '&trim_user=1';
-    url += '&include_entities=1';
 
-
-    jsonp(url, function(data) {
+    jsonp(url)
+    .query({
+      count: my.count,
+      trim_user: 1,
+      include_entities: 1
+    })
+    .end(function(data) {
       var tweets = data.map(function(tweet) {
         return parseTweet(tweet, my.username);
       });

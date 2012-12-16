@@ -8,7 +8,8 @@
   ],
   "dependencies": {
     "matthewmueller/json-to-dom": "*",
-    "component/moment": "*"
+    "component/moment": "*",
+    "code42day/jsonp": "*"
   },
   "development": {},
   "license": "MIT",
