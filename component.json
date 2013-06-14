@@ -9,7 +9,7 @@
   "dependencies": {
     "matthewmueller/json-to-dom": "*",
     "component/moment": "*",
-    "code42day/jsonp": "*"
+    "visionmedia/superagent": "*"
   },
   "development": {},
   "license": "MIT",

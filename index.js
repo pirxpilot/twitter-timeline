@@ -1,6 +1,6 @@
 var moment = require('moment');
 var render = require('json-to-dom');
-var jsonp = require('jsonp');
+var request = require('superagent');
 
 function splice(str, start, end, replacement) {
   return [str.slice(0, start), replacement, str.slice(end)].join('');
@@ -116,16 +116,20 @@ module.exports = function (username) {
   }
 
   function renderTweets(el) {
-    var url = 'http://api.twitter.com/1/statuses/user_timeline/' + my.username + '.json';
+    var url = '/1.1/statuses/user_timeline.json';
 
-    jsonp(url)
+    request(url)
     .query({
+      screen_name: my.username,
       count: my.count,
       trim_user: 1,
       include_entities: 1
     })
-    .end(function(data) {
-      var tweets = data.map(function(tweet) {
+    .end(function(res) {
+      if (!res.ok) {
+        return;
+      }
+      var tweets = res.body.map(function(tweet) {
         return parseTweet(tweet, my.username);
       });
       el.innerHTML = require('./template');
