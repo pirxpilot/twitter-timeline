@@ -1,14 +1,15 @@
+all: lint build
 
-build: components index.js twitter-timeline.css template.js
+lint:
+	@jshint index.js
+
+build: components index.js twitter-timeline.css
 	@component build --dev
-
-template.js: template.html
-	@component convert $<
 
 components: component.json
 	@component install --dev
 
 clean:
-	rm -fr build components template.js
+	rm -fr build components
 
-.PHONY: clean
+.PHONY: clean lint build all

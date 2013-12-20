@@ -1,1 +1,0 @@
-module.exports = '<ul class=\'timeline\'>\n  <li class="tweet">\n    <a class="date" data-href="href" href=\'#\'>tweet date</a>\n    <div class="text" data-html="text">tweet text</div>\n    <div class="photo">\n      <a class="url" data-href="url">\n        <img class="src" data-src="src"></img>\n      </a>\n    </div>\n  </li>\n</ul>';

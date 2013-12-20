@@ -7,15 +7,14 @@
     "twitter"
   ],
   "dependencies": {
-    "matthewmueller/json-to-dom": "*",
-    "component/moment": "*",
-    "visionmedia/superagent": "*"
+    "code42day/el": "0.1.0",
+    "code42day/tweet-html": "0.1.0",
+    "visionmedia/superagent": "0.15.4"
   },
   "development": {},
   "license": "MIT",
   "scripts": [
-    "index.js",
-    "template.js"
+    "index.js"
   ],
   "styles": [
     "twitter-timeline.css"
