@@ -1,3 +1,7 @@
+all: lint build
+
+lint:
+	@jshint index.js
 
 build: components index.js twitter-timeline.css
 	@component build --dev
@@ -8,4 +12,4 @@ components: component.json
 clean:
 	rm -fr build components
 
-.PHONY: clean
+.PHONY: clean lint build all
