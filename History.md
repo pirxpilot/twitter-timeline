@@ -1,4 +1,9 @@
 
+0.2.0 / 2013-12-20
+==================
+
+ * use tweet-html component to render tweets (support youtube, instagram, vine etc.)
+
 0.1.0 / 2013-06-14 
 ==================
 
