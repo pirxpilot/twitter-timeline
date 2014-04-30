@@ -7,9 +7,9 @@
     "twitter"
   ],
   "dependencies": {
-    "code42day/el": "0.1.0",
-    "code42day/tweet-html": "0.1.0",
-    "visionmedia/superagent": "0.15.4"
+    "code42day/el": "*",
+    "code42day/tweet-html": "*",
+    "visionmedia/superagent": "*"
   },
   "development": {},
   "license": "MIT",
