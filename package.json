@@ -16,7 +16,7 @@
   "dependencies": {
     "el-component": "^1.0.0",
     "superagent": "^1.0.0",
-    "tweet-html": "^1.0.0"
+    "tweet-html": "^1.2.0"
   },
   "browser": {
     "el": "el-component"

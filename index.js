@@ -40,7 +40,8 @@ module.exports = function (username) {
       exclude_replies: my.exclude_replies,
       include_rts: my.include_rts,
       trim_user: 1,
-      include_entities: 1
+      include_entities: 1,
+      tweet_mode: 'extended'
     })
     .end(function(err, res) {
       if (err) {
