@@ -1,6 +1,6 @@
 {
   "name": "twitter-timeline",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Displays twitter timeline: similar to twitter widget but no iframe and more flexible styling.",
   "scripts": {
     "test": "make check"

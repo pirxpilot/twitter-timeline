@@ -2,7 +2,7 @@
   "name": "twitter-timeline",
   "repo": "code42day/twitter-timeline",
   "description": "Displays twitter timeline similarly to twitter widget but without iframe and with more flexible styling options.",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "keywords": [
     "twitter"
   ],

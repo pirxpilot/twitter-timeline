@@ -1,4 +1,10 @@
 
+1.0.0 / 2016-12-30
+==================
+
+ * add support for extended Twitter format
+ * switch to browserify build
+
 0.3.0 / 2014-04-30
 ==================
 
