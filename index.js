@@ -42,8 +42,8 @@ module.exports = function (username) {
       trim_user: 1,
       include_entities: 1
     })
-    .end(function(res) {
-      if (!res.ok) {
+    .end(function(err, res) {
+      if (err) {
         return;
       }
       var tweets = res.body.slice(0, my.count).map(function(tweet) {
