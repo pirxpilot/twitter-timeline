@@ -8,7 +8,7 @@ See [Furkot Help](http://help.furkot.com) to see in action.
 
 ## Installation
 
-    $ component install code42day/twitter-timeline
+    $ npm install twitter-timeline
 
 ## API
 
@@ -39,7 +39,7 @@ for details on how to retrive `bearer token` and configure the proxy.
 
 ## Styling
 
-There is not any default styling included. Check out [example](/code42day/twitter-timeline/blob/master/example.html) for details.
+There is not any default styling included. Check out [example](https://github.com/pirxpilot/twitter-timeline/blob/master/example.html) for details.
 
 The following classes are used:
 
