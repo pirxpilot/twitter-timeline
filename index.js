@@ -1,6 +1,6 @@
 var el = require('el');
 var tweet2html = require('tweet-html');
-var request = require('superagent');
+var request = require('fetchagent');
 
 module.exports = function (username) {
   var self, my = {
@@ -33,7 +33,8 @@ module.exports = function (username) {
       count *= 3; // ask for more so that we can still get valid count
     }
 
-    request(url)
+    request
+    .get(url)
     .query({
       screen_name: my.username,
       count: count,
@@ -43,11 +44,9 @@ module.exports = function (username) {
       include_entities: 1,
       tweet_mode: 'extended'
     })
-    .end(function(err, res) {
-      if (err) {
-        return;
-      }
-      var tweets = res.body.slice(0, my.count).map(function(tweet) {
+    .json()
+    .then(function(body) {
+      var tweets = body.slice(0, my.count).map(function(tweet) {
         return el('li.tweet', tweet2html(tweet, my.username));
       });
       container.innerHTML = el('ul.timeline', tweets.join(''));
