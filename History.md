@@ -1,4 +1,11 @@
 
+3.0.0 / 2021-02-16
+==================
+
+ * upgrade tweet-html to 2.0.0
+ * upgrade fetchagent to 2.0.0
+ * rewrite in ES6
+
 2.0.0 / 2017-10-30
 ==================
 
