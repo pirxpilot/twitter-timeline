@@ -1,10 +1,17 @@
-var el = require('el');
-var tweet2html = require('tweet-html');
-var request = require('fetchagent');
+const el = require('el');
+const tweet2html = require('tweet-html');
+const request = require('fetchagent');
 
-module.exports = function (username) {
-  var self, my = {
-    username: username,
+module.exports = username => {
+  const self = {
+    count,
+    replies,
+    retweets,
+    render: renderTweets
+  };
+
+  const my = {
+    username,
     exclude_replies: 0,
     include_rts: 1,
     count: 10
@@ -26,8 +33,8 @@ module.exports = function (username) {
   }
 
   function renderTweets(container) {
-    var count = my.count,
-      url = '/1.1/statuses/user_timeline.json';
+    let count = my.count;
+    const url = '/1.1/statuses/user_timeline.json';
 
     if (my.include_rts !== 1 || my.exclude_replies !== 0) {
       count *= 3; // ask for more so that we can still get valid count
@@ -37,7 +44,7 @@ module.exports = function (username) {
     .get(url)
     .query({
       screen_name: my.username,
-      count: count,
+      count,
       exclude_replies: my.exclude_replies,
       include_rts: my.include_rts,
       trim_user: 1,
@@ -45,20 +52,13 @@ module.exports = function (username) {
       tweet_mode: 'extended'
     })
     .json()
-    .then(function(body) {
-      var tweets = body.slice(0, my.count).map(function(tweet) {
+    .then(body => {
+      const tweets = body.slice(0, my.count).map(tweet => {
         return el('li.tweet', tweet2html(tweet, my.username));
       });
       container.innerHTML = el('ul.timeline', tweets.join(''));
     });
   }
-
-  self = {
-    count: count,
-    replies: replies,
-    retweets: retweets,
-    render: renderTweets
-  };
 
   return self;
 };
