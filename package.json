@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "el-component": "^1.0.0",
-    "fetchagent": "^1.1.2",
+    "fetchagent": "^2.0.0",
     "tweet-html": "^1.2.0"
   },
   "browser": {
